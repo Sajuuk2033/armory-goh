@@ -197,3 +197,7 @@ dialog input[type=text]{width:100%}
 
 .notice-box{margin:12px 0;padding:10px 12px;border:1px solid var(--line,#ccc);border-radius:8px;background:rgba(127,127,127,.08)}
 .notice-box p{margin:6px 0}
+
+#remind{border-color:var(--accent,#d6be78);box-shadow:0 0 0 2px rgba(214,190,120,.35)}
+.remind-steps{margin:10px 0 0;padding-left:22px;max-height:none}
+.remind-steps li{margin:6px 0}

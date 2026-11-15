@@ -24,7 +24,7 @@ Armory is a small local app (Python + your web browser). It reads your own Dynam
 [size=4][b]Install[/b][/size]
 [list=1]
 [*] Unzip anywhere.
-[*] Double-click start_armory.bat (or run: python server.py). Your browser opens at http://127.0.0.1:8791/
+[*] Double-click start_armory.bat (or run: python server.py). Your browser opens at http://127.0.0.1:8765/
 [*] If your game or saves are in an unusual place, open Settings and paste the folders.
 [/list]
 

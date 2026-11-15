@@ -245,6 +245,20 @@ function perkNotes(notes) {
 }
 const NEEDS_GEAR = { sniper_vision: 'needs a scoped rifle', medic: 'needs a medic bag' };
 
+/* After a save that wrote soldier types, a popup on top of the "Saved" dialog: the generated mod must be switched on in game. */
+function remindActivateMod() {
+  const p = $('#remind');
+  p.replaceChildren(
+    h('h2', { id: 'remind-title' }, 'One more step: switch the mod on'),
+    h('p', {}, 'Armory saved your changes in a small mod it generated, ', h('b', {}, '“Armory soldier breeds”'), '. Without it, the uniform, rank, skills, icon, tag, portrait and crate resupply of your edited soldiers will not show in game.'),
+    h('ol', { class: 'remind-steps' },
+      h('li', {}, 'Start the game. If it was open, ', h('b', {}, 'restart it'), ': mods are only read at startup.'),
+      h('li', {}, 'Open the game’s mod list and ', h('b', {}, 'switch on “Armory soldier breeds”'), '.'),
+      h('li', {}, 'Open ', h('b', {}, 'Campaign → Load'), ' and pick your saved copy.')),
+    h('div', { class: 'actions' }, h('button', { class: 'btn primary', autofocus: true, onclick: () => p.close() }, 'Got it')));
+  p.showModal();
+}
+
 /* ---------- Identity: name (save) + icon and tag (breed) ---------- */
 const ICON_LABEL = { rifle: 'Rifleman', autorifle: 'Automatic rifle', smg: 'SMG', tech: 'Crew / technical', mg: 'Machine gun', bazooka: 'Rocket launcher', sniper: 'Sniper',
   pistol: 'Pistol', signaller: 'Signaller', stg: 'Assault rifle', atrifle: 'AT rifle', flamer: 'Flamethrower', riflegrenade: 'Rifle grenade', shotgun: 'Shotgun',
@@ -592,6 +606,7 @@ async function reviewDialog() {
         h('p', {}, h('b', {}, 'Before you load the save: '), 'make sure “Armory soldier breeds” is switched on in the game’s mod list, and ', h('b', {}, 'restart the game'), ' if it was open — it only reads mods at startup.')) : null,
       h('div', { class: 'actions' }, h('button', { class: 'btn primary', onclick: () => d.close() }, 'Done')));
     refreshSaves();
+    if (r.breeds) remindActivateMod();
   });
   const groups = new Map();                                  // identical change lists collapse into one line
   for (const eid of eids) { const k = allChanges(eid).join('; '); (groups.get(k) || groups.set(k, []).get(k)).push(eid); }
