@@ -26,8 +26,11 @@ Version 1.0.0 - MIT license - not affiliated with the game's developers or publi
 - "Overwrite the original" is optional, needs a tick-box confirmation and first copies the original to `backups/`.
 - Close the game before saving from Armory.
 - Items that come from a mod the save does not list are refused (the game would silently drop them).
-- Armory writes one small data-only mod, `armory_breeds`, into the game's `mods` folder. **Restart the game after saving
-  if it was open**: the game reads mods at startup, so changed soldier types are only picked up after a restart.
+- Armory writes one small data-only mod, `armory_breeds` (shown in game as "Armory soldier breeds"), into the game's `mods`
+  folder. It holds the uniform, rank, skills, icon, tag and portrait of the soldiers you edited, and it is what makes supply
+  crates refill them to their new kit, which always happens; there is no option for it.
+- **You must switch that mod on in the game's mod list, then load your Armory copy.** Restart the game after saving if it
+  was open: the game reads mods at startup, so changed soldier types are only picked up after a restart.
 - No DLL injection, no executable patching, nothing runs inside the game. Intended for single-player Conquest.
 
 ## What each section edits

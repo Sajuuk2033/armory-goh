@@ -194,3 +194,6 @@ dialog input[type=text]{width:100%}
 .portrait-sel{background:var(--panel2);color:inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px;min-width:220px;max-width:100%;font:inherit}
 .portrait-sel:hover{border-color:var(--accent)}
 .portrait-sel option{background:var(--panel2);color:var(--text)}
+
+.notice-box{margin:12px 0;padding:10px 12px;border:1px solid var(--line,#ccc);border-radius:8px;background:rgba(127,127,127,.08)}
+.notice-box p{margin:6px 0}

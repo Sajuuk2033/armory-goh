@@ -559,7 +559,6 @@ async function reviewDialog() {
   const base = S.save.name.replace(/ \(Armory\)$/, '') + ' (Armory)';
   const input = h('input', { type: 'text', id: 'copy-name', value: base, 'aria-describedby': 'copy-help' });
   let mode = 'copy';                                          // 'copy' (safe default) or 'overwrite'
-  const fixBox = h('input', { type: 'checkbox', id: 'fix-resupply', checked: true });
   const sure = h('input', { type: 'checkbox', id: 'sure' });
   const go = h('button', { class: 'btn primary' }, 'Save copy');
   const copyBox = h('div', { class: 'mode-body' }, h('label', { for: 'copy-name' }, 'Name of the new copy'), input,
@@ -583,13 +582,14 @@ async function reviewDialog() {
       const v = {}; if (S.look[e].icon !== S.look0[e].icon) v.icon = S.look[e].icon; if (S.look[e].tag !== S.look0[e].tag) v.tag = S.look[e].tag; if (S.look[e].portrait !== S.look0[e].portrait) v.portrait = S.look[e].portrait; if (S.look[e].skin !== S.look0[e].skin) v.skin = S.look[e].skin; if (S.look[e].vet !== S.look0[e].vet) v.vet = S.look[e].vet; if (perksChanged(e)) v.perks = S.look[e].perks; looks[e] = v;
     }
     const r = await api('/api/save', { file: S.save.file, dir: S.save.dir, name: input.value.trim() || base, edits: eids.filter(invChanged).map(e => S.cur[e]), looks, names,
-      overwrite: mode === 'overwrite', fix_resupply: fixBox.checked });
+      overwrite: mode === 'overwrite' });
     if (r.error) { go.textContent = label0; sync(); toast(r.error, true); return; }
     d.replaceChildren(h('h2', {}, 'Saved ✓'), h('div', { class: 'ok-box' }, h('p', {}, h('b', {}, r.file)), h('p', { class: 'muted' }, r.path)),
       r.overwrote ? h('p', {}, 'The original was replaced. A backup of how it was is in ', h('code', {}, r.backup_dir), '.')
         : h('p', {}, 'In the game, open ', h('b', {}, 'Campaign → Load'), ' and pick this copy. Your original save was not touched.'),
-      r.breeds ? h('p', { class: 'muted' }, `Armory added ${r.breeds} custom soldier type${r.breeds > 1 ? 's' : ''} (a small local mod called “armory_breeds”) so supply crates can refill these soldiers. `,
-        h('b', {}, 'Restart the game'), ' if it was open — it only reads mods at startup.') : null,
+      r.breeds ? h('div', { class: 'notice-box' },
+        h('p', {}, `Armory added ${r.breeds} custom soldier type${r.breeds > 1 ? 's' : ''} to a small local mod called “Armory soldier breeds” (armory_breeds). It carries the uniform, rank, skills, icon, tag, portrait and crate resupply for the soldiers you edited.`),
+        h('p', {}, h('b', {}, 'Before you load the save: '), 'make sure “Armory soldier breeds” is switched on in the game’s mod list, and ', h('b', {}, 'restart the game'), ' if it was open — it only reads mods at startup.')) : null,
       h('div', { class: 'actions' }, h('button', { class: 'btn primary', onclick: () => d.close() }, 'Done')));
     refreshSaves();
   });
@@ -602,7 +602,6 @@ async function reviewDialog() {
     h('div', { class: 'modes' }, radio('copy', 'Save as a new copy', 'Recommended. Your original stays exactly as it is.'),
       radio('overwrite', 'Overwrite the original', 'Replaces this save (a backup is kept).')),
     copyBox, warnBox,
-    h('label', { class: 'check', title: 'Adds a tiny local mod so supply crates refill edited soldiers' }, fixBox, ' Keep edited soldiers resupplied by crates (recommended)'),
     h('div', { class: 'actions' }, h('button', { class: 'btn', onclick: () => d.close() }, 'Back'), go)].filter(Boolean));
   sync();
   d.showModal();

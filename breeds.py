@@ -1,4 +1,4 @@
-"""Generated soldier breeds: the (unverified) fix for "edited soldiers are never resupplied".
+"""Generated soldier breeds: what lets supply crates refill edited soldiers (a crate refills a soldier to his BREED inventory).
 
 Why: a Conquest save stores each soldier's *current* pack ({Inventory}), but the soldier's *breed* (a `set/breed/.../*.set`
 file) lists what that kind of soldier is SUPPOSED to carry. Players report that crates only top up soldiers whose weapons

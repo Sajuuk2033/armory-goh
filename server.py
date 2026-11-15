@@ -231,21 +231,20 @@ def api_save(_q, b):
             raise lo.LoadoutError(str(e))
     names = check_names(src, b.get("names") or {})
     vets = {e: v["vet"] for e, v in looks.items() if v.get("vet") is not None}
-    if b.get("fix_resupply", True) or looks:
-        r = config.resolved()
-        soldiers = sf.open_save(src, CAT)["soldiers"]
-        have = {x["eid"]: x["breed"] for x in soldiers}
-        game, ws = Path(r["game_dir"]), Path(r["workshop_dir"]) if r["workshop_dir"] else None
-        # soldiers edited in an EARLIER save (not touched now) still need a matching breed, or crates won't refill them
-        # Soldiers edited in an EARLIER save (not touched now) still need a matching breed, or crates won't refill them.
-        texts = breeds.find_bases(game, ws, set(have.values()))          # one pass over the paks for the whole save
-        want = dict(edits)
-        for x in soldiers:
-            if x["eid"] not in want and breeds.needs_breed(game, ws, x["loadout"], x["breed"], texts):
-                want[x["eid"]] = x["loadout"]
-        remap, files = breeds.plan(game, ws, want, have, CAT, looks, texts)
-        mods_dir = Path(os.environ["ARMORY_MODS_DIR"]) if os.environ.get("ARMORY_MODS_DIR") else None
-        breeds.install(Path(r["game_dir"]), files, mods_dir, CAT.names["breeds"])
+    # Every save gets its soldier types (generated breeds): that is what lets supply crates refill edited soldiers.
+    r = config.resolved()
+    soldiers = sf.open_save(src, CAT)["soldiers"]
+    have = {x["eid"]: x["breed"] for x in soldiers}
+    game, ws = Path(r["game_dir"]), Path(r["workshop_dir"]) if r["workshop_dir"] else None
+    # Soldiers edited in an EARLIER save (not touched now) still need a matching breed, or crates won't refill them.
+    texts = breeds.find_bases(game, ws, set(have.values()))          # one pass over the paks for the whole save
+    want = dict(edits)
+    for x in soldiers:
+        if x["eid"] not in want and breeds.needs_breed(game, ws, x["loadout"], x["breed"], texts):
+            want[x["eid"]] = x["loadout"]
+    remap, files = breeds.plan(game, ws, want, have, CAT, looks, texts)
+    mods_dir = Path(os.environ["ARMORY_MODS_DIR"]) if os.environ.get("ARMORY_MODS_DIR") else None
+    breeds.install(Path(r["game_dir"]), files, mods_dir, CAT.names["breeds"])
     if b.get("overwrite"):
         out = sf.write_copy(src, edits, None, overwrite=True, remap=remap, vets=vets, names=names)
         return {"path": str(out), "file": out.name, "overwrote": True, "breeds": len(set((remap or {}).values())), "backup_dir": str(sf.BACKUPS)}

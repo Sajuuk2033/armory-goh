@@ -11,8 +11,9 @@ First public release.
 - Skills: weapon skill level, toughness/build tier, anti-tank rank, specialties (stealth, medic, marksman, sniper optics,
   binocular optics, skilled repair, engineer).
 - Identity: soldier name (from the game's own name lists), unit-card icon, ability tag, portrait.
-- Generated data-only mod `armory_breeds` so supply crates refill edited soldiers to their new kit, with on-screen unit
-  names for generated soldier types.
+- Generated data-only mod `armory_breeds` ("Armory soldier breeds") so supply crates always refill edited soldiers to
+  their new kit (not optional), with on-screen unit names for generated soldier types. Switch it on in the game's mod
+  list before loading a saved copy.
 - Safety: saves are always written as new copies with their own campaign name; "overwrite" is opt-in and backs up first.
   Items from mods the save does not list are refused.
 - Game and save folders auto-detected (Steam libraries, Documents/OneDrive), overridable in Settings.

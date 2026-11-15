@@ -33,6 +33,7 @@ Armory is a small local app (Python + your web browser). It reads your own Dynam
 [*] Saves are copied, never overwritten. The copy gets its own campaign name so saving in game cannot overwrite the original.
 [*] "Overwrite the original" is optional, needs confirmation and makes a backup first.
 [*] Close the game before saving from Armory, and restart the game afterwards because mods are read at startup.
+[*] [b]Switch on the "Armory soldier breeds" mod in the game's mod list[/b] before loading your copy. Armory creates it in the game's mods folder when you save. It carries the uniform, rank, skills, icon, tag, portrait and crate resupply for the soldiers you edited, so without it those changes will not show.
 [*] Keep your own backups of saves you care about.
 [/list]
 

@@ -398,7 +398,7 @@ class Names(Base):
     def test_rename_uses_the_soldiers_own_nations_list(self):
         d = self.open("rus.sav")
         s = d["soldiers"][0]
-        r = server.api_save(None, {"file": "rus.sav", "dir": str(self.camp), "name": "Renamed", "edits": [], "fix_resupply": False,
+        r = server.api_save(None, {"file": "rus.sav", "dir": str(self.camp), "name": "Renamed", "edits": [],
                                    "names": {s["eid"]: [1, 2]}})
         again = sf.open_save(pathlib.Path(r["path"]), self.cat)["soldiers"][0]
         self.assertEqual(again["name_id"], [1, 2])
