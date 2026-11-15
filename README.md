@@ -4,6 +4,7 @@ Change what your soldiers carry, wear and know, then load the result as a new ca
 Armory is a small local app (Python plus your web browser). It never touches the running game process.
 
 Version 1.0.0 - MIT license - not affiliated with the game's developers or publisher.
+Source, releases and bug reports: https://github.com/Sajuuk2033/armory-goh
 
 ## What you need
 - Call to Arms - Gates of Hell: Ostfront (developed against v1.067.0), **your own copy**. Armory ships no game files;

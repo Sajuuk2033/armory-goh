@@ -5,6 +5,9 @@ Change what your soldiers carry, wear and know, then load the result as a new ca
 [size=4][b]What it is[/b][/size]
 Armory is a small local app (Python + your web browser). It reads your own Dynamic Conquest saves and your own game install, lets you edit soldiers, and writes a new save copy. It does not inject anything into the game and does not patch any game file. No game files are included in the download.
 
+[b]Source code, updates and bug reports:[/b] [url=https://github.com/Sajuuk2033/armory-goh]https://github.com/Sajuuk2033/armory-goh[/url]
+Armory is open source (MIT). Everything in this download is plain Python and web files you can read on GitHub, with nothing compiled.
+
 [size=4][b]Features[/b][/size]
 [list]
 [*] Weapons and gear: primary, sidearm, launcher, backup gun, headgear, grenades, medical, tools. Ammo follows the weapon; "Add ammo" picker; 8-wide pack grid with auto-sort and drag and drop.
@@ -43,6 +46,12 @@ Armory is a small local app (Python + your web browser). It reads your own Dynam
 [*] Not verified in game: portraits, unit-card icon changes, ability-tag effects, on-screen labels of generated soldier types.
 [*] Soviet, British, American and Finnish saves: supported from the game's own data and unit tests, not played yet.
 [*] Heavily modded campaigns may contain items Armory cannot describe.
+[/list]
+
+[size=4][b]Links[/b][/size]
+[list]
+[*] Source code and releases: [url=https://github.com/Sajuuk2033/armory-goh]github.com/Sajuuk2033/armory-goh[/url]
+[*] Report a bug or suggest a feature: [url=https://github.com/Sajuuk2033/armory-goh/issues]GitHub Issues[/url]
 [/list]
 
 [size=4][b]Support[/b][/size]
