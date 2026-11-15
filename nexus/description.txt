@@ -1,0 +1,52 @@
+[size=5][b]Armory - soldier editor for Gates of Hell (Dynamic Conquest)[/b][/size]
+
+Change what your soldiers carry, wear and know, then load the result as a new campaign save.
+
+[size=4][b]What it is[/b][/size]
+Armory is a small local app (Python + your web browser). It reads your own Dynamic Conquest saves and your own game install, lets you edit soldiers, and writes a new save copy. It does not inject anything into the game and does not patch any game file. No game files are included in the download.
+
+[size=4][b]Features[/b][/size]
+[list]
+[*] Weapons and gear: primary, sidearm, launcher, backup gun, headgear, grenades, medical, tools. Ammo follows the weapon; "Add ammo" picker; 8-wide pack grid with auto-sort and drag and drop.
+[*] Uniform (skin) and rank (veterancy).
+[*] Skills: weapon skill, toughness and build, anti-tank rank, specialties (stealth, medic, marksman, sniper optics, binocular optics, skilled repair, engineer).
+[*] Identity: name from the game's own lists, unit-card icon, ability tag, portrait.
+[*] Apply to one soldier, a whole squad, or every soldier of a role. Undo/redo, plain-language change list.
+[*] A tiny generated data-only mod (armory_breeds) makes supply crates refill edited soldiers to their new kit.
+[/list]
+
+[size=4][b]Requirements[/b][/size]
+[list]
+[*] Call to Arms - Gates of Hell: Ostfront (your own copy; developed against v1.067.0)
+[*] Python 3.10 or newer (nothing else to install)
+[/list]
+
+[size=4][b]Install[/b][/size]
+[list=1]
+[*] Unzip anywhere.
+[*] Double-click start_armory.bat (or run: python server.py). Your browser opens at http://127.0.0.1:8791/
+[*] If your game or saves are in an unusual place, open Settings and paste the folders.
+[/list]
+
+[size=4][b]Safety[/b][/size]
+[list]
+[*] Saves are copied, never overwritten. The copy gets its own campaign name so saving in game cannot overwrite the original.
+[*] "Overwrite the original" is optional, needs confirmation and makes a backup first.
+[*] Close the game before saving from Armory, and restart the game afterwards because mods are read at startup.
+[*] Keep your own backups of saves you care about.
+[/list]
+
+[size=4][b]Known limits / not verified in game[/b][/size]
+[list]
+[*] Verified in game with German saves: loadout, uniform, rank, skills, names, crate refill for edited soldiers.
+[*] Not verified in game: portraits, unit-card icon changes, ability-tag effects, on-screen labels of generated soldier types.
+[*] Soviet, British, American and Finnish saves: supported from the game's own data and unit tests, not played yet.
+[*] Heavily modded campaigns may contain items Armory cannot describe.
+[/list]
+
+[size=4][b]Support[/b][/size]
+Armory is free. Support its development on Ko-fi (Sajuuk): [url=https://ko-fi.com/sajuuk2033]https://ko-fi.com/sajuuk2033[/url]
+[url=https://ko-fi.com/sajuuk2033][img]https://storage.ko-fi.com/cdn/generated/fhfuc7slzawvi/2026-11-15_rest-e3d3b1148ed8909b5afd4e9a847d0c82-fthlyfbg.jpg[/img][/url]
+
+[size=4][b]Credits[/b][/size]
+Inspired by the idea behind Cursed Workshop. No code from it was copied. Gates of Hell and Call to Arms belong to their owners. MIT license. Version 1.0.0.

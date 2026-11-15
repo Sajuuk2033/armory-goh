@@ -1,0 +1,7 @@
+# generated from your own game install / your own settings
+catalog.json
+config.json
+backups/
+__pycache__/
+*.pyc
+dist/

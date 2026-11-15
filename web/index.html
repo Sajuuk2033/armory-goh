@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Armory — Gates of Hell soldier loadouts</title>
+<meta name="armory-token" content="__TOKEN__">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="appbar">
+  <div class="brand"><span class="mark" aria-hidden="true">A</span><div><strong>Armory</strong><small>Soldier loadouts for Gates of Hell</small></div></div>
+  <div class="opener">
+    <label for="save-select" class="sr">Campaign save</label>
+    <select id="save-select"><option value="">Loading your saves…</option></select>
+    <button id="open-btn" class="btn primary" disabled>Open</button>
+  </div>
+  <div id="game-chip" class="chip" role="status"></div>
+  <button id="settings-btn" class="btn" title="Where the game and your saves are">Settings</button>
+</header>
+
+<div id="notice" class="notice hidden" role="alert"></div>
+
+<main class="layout">
+  <aside class="col soldiers" aria-label="Soldiers">
+    <div class="col-head">
+      <h2>Soldiers</h2>
+      <input id="soldier-search" type="search" placeholder="Search soldiers…" aria-label="Search soldiers" disabled>
+    </div>
+    <div id="soldier-list" class="soldier-list"><p class="muted pad">Open a save to see your soldiers.</p></div>
+  </aside>
+
+  <section class="col editor" aria-label="Loadout editor" id="editor">
+    <div id="welcome" class="welcome">
+      <h1>Change what your soldiers carry and wear</h1>
+      <ol class="steps">
+        <li><b>Open a save</b> from the menu above. Your original is never changed.</li>
+        <li><b>Pick a soldier</b> on the left.</li>
+        <li><b>Click a slot</b> (weapon, hat, grenades…) to swap it. Ammo follows the weapon automatically.</li>
+        <li><b>Review &amp; save a copy</b>, then load the copy from the campaign menu in game.</li>
+      </ol>
+      <p class="muted">Tip: close the game (or sit in the main menu) before saving a copy. Each soldier also has Identity (name, icon, tag), Rank and Skills sections, and a Uniform card (skin). Every section can be hidden.</p>
+    </div>
+    <div id="soldier-view" class="hidden"></div>
+  </section>
+
+  <aside class="col picker" id="picker" aria-label="Item picker">
+    <div class="picker-empty muted pad" id="picker-empty">
+      <h2>Item picker</h2>
+      <p>Choose a slot in the middle to see what you can put there.</p>
+    </div>
+    <div id="picker-body" class="hidden"></div>
+  </aside>
+</main>
+
+<footer class="bar">
+  <div class="bar-left">
+    <button id="undo-btn" class="btn" disabled title="Undo (Ctrl+Z)">↶ Undo</button>
+    <button id="redo-btn" class="btn" disabled title="Redo (Ctrl+Y)">↷ Redo</button>
+  </div>
+  <div id="bar-status" class="muted">No changes yet</div>
+  <button id="review-btn" class="btn primary big" disabled>Review &amp; save a copy…</button>
+</footer>
+
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<dialog id="dlg"></dialog>
+<script src="/app.js"></script>
+</body>
+</html>
